@@ -1,13 +1,15 @@
 <?php
 // src/Bug.php
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * class for entity Bug
  *
  * @Entity(repositoryClass="BugRepository")
  * @Table(name="bugs")
  *
- * @version 1.0
+ * @version 1.1
  * @author  nelkenjosef
  * @since   class available since release 1.1.0
  */
@@ -46,6 +48,20 @@ class Bug
      * @since 1.0
      */
     protected $status;
+
+    /**
+     * @var   Doctrine\Common\Collections\ArrayCollection of Product
+     * @since 1.1
+     */
+    protected $products;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+    }
 
 
     /**
