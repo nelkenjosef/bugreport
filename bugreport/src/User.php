@@ -1,13 +1,15 @@
 <?php
 // src/User.php
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * class for entity User
  *
  * @Entity
  * @Table(name="users")
  *
- * @version 1.0
+ * @version 1.1
  * @author  nelkenjosef
  * @since   class available since release 1.1.1
  */
@@ -30,6 +32,27 @@ class User
      * @since 1.0
      */
     protected $name;
+
+    /**
+     * @var   Doctrine\Common\Collections\ArrayCollection of Bug
+     * @since 1.1
+     */
+    protected $reportedBugs;
+
+    /**
+     * @var   Doctrine\Common\Collections\ArrayCollection of Bug
+     * @since 1.1
+     */
+    protected $assignedBugs;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->reportedBugs = new ArrayCollection();
+        $this->assignedBugs = new ArrayCollection();
+    }
 
     /**
      * Getter for $id
